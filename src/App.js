@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { createTodo } from './graphql/mutations';
 import { listTodos } from './graphql/queries';
-import { postToDataStore } from './datastore';
+// import { postToDataStore } from './datastore';
 
 const initialState = {
   name: '',
@@ -42,8 +42,8 @@ const App = () => {
       setTodos([...todos, todo]);
       setFormState(initialState);
       await API.graphql(graphqlOperation(createTodo, { input: todo }));
-      console.log('Posting to datastore');
-      await postToDataStore(todo);
+      // console.log('Posting to datastore');
+      // await postToDataStore(todo);
     } catch (err) {
       console.log('error creating todo:', err);
     }
